@@ -1,0 +1,3 @@
+FROM manjarolinux/base:latest
+
+
