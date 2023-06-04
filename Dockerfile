@@ -42,6 +42,6 @@ bash -c ". ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts && npm install -g
 
 # Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-END
+EOF
 
 ENTRYPOINT [ "/bin/bash" ]
