@@ -31,7 +31,7 @@ git clone --depth 1 https://github.com/tobihans/nvim-config .config/nvim/lua/use
 
 # Bash prompt setup
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
-bash -c "$(curl -fsLS https://chezmoi.io/get)" -- init https://github.com/tobihans/dotfiles.git
+bash -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply https://github.com/tobihans/dotfiles.git
 
 # SDKMAN
 curl -s "https://get.sdkman.io" | bash
