@@ -5,7 +5,7 @@ RUN <<EOF
 pacman -Syy --noconfirm --needed base-devel shadow git git-lfs cmake libseccomp libtool
 pacman -Syy --noconfirm --needed chezmoi curl zip unzip neovim tree-sitter xclip ripgrep bottom lazygit tmux
 pacman -Syy --noconfirm --needed php composer php-apache php-cgi php-fpm php-gd  php-embed php-intl php-redis php-snmp
-pacman -Syy --noconfirm --needed docker
+pacman -Syy --noconfirm --needed docker openssh github-cli
 rm -f /var/cache/pacman/pkg/*
 EOF
 
