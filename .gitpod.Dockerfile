@@ -3,7 +3,7 @@ FROM manjarolinux/base:latest
 
 RUN <<EOF
 pacman -Syy --noconfirm --needed base-devel shadow git git-lfs cmake libseccomp libtool
-pacman -Syy --noconfirm --needed chezmoi curl zip unzip neovim tree-sitter xclip ripgrep bottom lazygit tmux
+pacman -Syy --noconfirm --needed chezmoi curl zip unzip neovim tree-sitter xclip ripgrep bottom lazygit tmux stylua bat
 pacman -Syy --noconfirm --needed php composer php-apache php-cgi php-fpm php-gd  php-embed php-intl php-redis php-snmp
 pacman -Syy --noconfirm --needed docker openssh github-cli
 rm -f /var/cache/pacman/pkg/*
@@ -27,7 +27,6 @@ RUN <<EOF
 # Neovim setup
 mkdir -p .config && git clone --depth 1 https://github.com/AstroNvim/AstroNvim .config/nvim
 git clone --depth 1 https://github.com/tobihans/nvim-config .config/nvim/lua/user
-NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'autocmd User LazyDone quitall'
 
 # Bash prompt setup
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
@@ -43,6 +42,8 @@ bash -c ". ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts && npm install -g
 # Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 bash -c "source $HOME/.cargo/env && cargo install starship --locked"
+
+NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'autocmd User LazyDone quitall'
 EOF
 
 WORKDIR /workspace
