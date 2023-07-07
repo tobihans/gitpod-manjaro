@@ -14,13 +14,12 @@ ENV LANG=en_US.UTF-8
 RUN useradd -l -u 33333 -G wheel -md /home/gitpod -s /bin/bash -p gitpod gitpod
 
 ENV HOME=/home/gitpod
-ENV NVIM_UNATTENDED_INSTALLATION=true
 
 WORKDIR $HOME
 
 RUN sudo echo "gitpod ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
-RUN sudo usermod -aG docker gitpod
-RUN sudo git lfs install --system
+# RUN sudo usermod -aG docker gitpod
+# RUN sudo git lfs install --system
 
 USER gitpod
 
@@ -28,6 +27,7 @@ RUN <<EOF
 # Neovim setup
 mkdir -p .config && git clone --depth 1 https://github.com/AstroNvim/AstroNvim .config/nvim
 git clone --depth 1 https://github.com/tobihans/nvim-config .config/nvim/lua/user
+NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'autocmd User LazyDone quitall'
 
 # Bash prompt setup
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended
@@ -44,5 +44,7 @@ bash -c ". ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts && npm install -g
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 bash -c "source $HOME/.cargo/env && cargo install starship --locked"
 EOF
+
+WORKDIR /workspace
 
 ENTRYPOINT [ "/bin/bash" ]
