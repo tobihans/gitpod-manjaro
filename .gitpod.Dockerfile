@@ -43,7 +43,8 @@ bash -c ". ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts && npm install -g
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 bash -c "source $HOME/.cargo/env && cargo install starship --locked"
 
-NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'autocmd User LazyDone quitall'
+# NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'autocmd User LazyDone quitall'
+NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'quitall'
 EOF
 
 WORKDIR /workspace
