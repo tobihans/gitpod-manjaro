@@ -19,7 +19,7 @@ WORKDIR $HOME
 
 RUN sudo echo "gitpod ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 # RUN sudo usermod -aG docker gitpod
-# RUN sudo git lfs install --system
+# RUN sudo git lfs install --system --skip-repo
 
 USER gitpod
 
@@ -43,8 +43,7 @@ bash -c ". ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts && npm install -g
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 bash -c "source $HOME/.cargo/env && cargo install starship --locked"
 
-# NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'autocmd User LazyDone quitall'
-NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'quitall'
+# NVIM_UNATTENDED_INSTALLATION=true nvim --headless -c 'quitall'
 EOF
 
 WORKDIR /workspace
