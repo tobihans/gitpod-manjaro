@@ -8,13 +8,10 @@ ENV HOME=/home/gitpod
 
 WORKDIR $HOME
 
-RUN sudo echo "gitpod ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
-RUN sudo usermod -aG docker gitpod
-RUN sudo git lfs install --system --skip-repo
-
 USER gitpod
 
 RUN bash -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply https://github.com/tobihans/dotfiles.git
+RUN sudo echo "gitpod ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 RUN rm -f /var/cache/pacman/pkg/*
 
 WORKDIR /workspace
