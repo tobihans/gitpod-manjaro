@@ -10,9 +10,6 @@ WORKDIR $HOME
 
 USER gitpod
 
-RUN sudo echo "gitpod ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
-RUN rm -f /var/cache/pacman/pkg/*
-
 WORKDIR /workspace
 
 ENTRYPOINT [ "/bin/bash" ]
