@@ -10,7 +10,6 @@ WORKDIR $HOME
 
 USER gitpod
 
-RUN bash -c "$(curl -fsLS https://chezmoi.io/get)" -- init --apply https://github.com/tobihans/dotfiles.git
 RUN sudo echo "gitpod ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 RUN rm -f /var/cache/pacman/pkg/*
 
