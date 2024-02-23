@@ -10,6 +10,9 @@ WORKDIR $HOME
 
 USER gitpod
 
+RUN pacman -S git --noconfirm
+RUN rm -f /var/cache/pacman/pkg/*
+
 WORKDIR /workspace
 
 ENTRYPOINT [ "/bin/bash" ]
